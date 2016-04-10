@@ -1,6 +1,5 @@
 package telegrambot
 
-
 type SendMessageObj struct {
     ChatID string `json:"chat_id"`
     Test string `json:"text"`
@@ -10,4 +9,21 @@ type SendMessageObj struct {
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup *interface{} `json:"reply_markup,omitempty"`
 }
+
+type ForwardMessageObj struct {
+    ChatID string `json:"chat_id"`
+    FromChatID string `json:"from_chat_id"`
+    MessageID int64 `json:"message_id"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+}
+
+type SendPhotoObj struct {
+    ChatID string `json:"chat_id"`
+    Photo interface{} `json:"photo"`
+    Caption string `json:caption,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup *interface{} `json:"reply_markup,omitempty"`
+}
+
 

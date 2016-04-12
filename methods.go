@@ -1,6 +1,7 @@
 package telegrambot
 
 import (
+    "os"
     "errors"
     "encoding/json"
 )
@@ -43,6 +44,24 @@ func (api *API) SendPhoto(ph *SendPhotoObj) (*Message, error) {
             return nil, errors.New("Photo should be string or file")
         case string:
             data, err = api.callPostMethod("sendPhoto", ph)
+        case *os.File:
+            params := make(map[string]string)
+            params["chat_id"] = ph.ChatID
+            params["caption"] = ph.Caption
+            if ph.DisableNotification == true {
+                params["disable_notification"] = "True"
+            }
+            if ph.DisableNotification == false {
+                params["disable_notification"] = "False"
+            }
+            if ph.ReplyToMessageId > 0{
+                params["reply_to_message_id"] = string(ph.ReplyToMessageId)
+            }
+
+           // if ph.ReplyMarkup != nil {
+           //     params["reply_markup"] = string(ph.ReplyMarkup)
+           // }
+            data, err = api.callPostMultipartMethod("sendPhoto", params, ph.Photo.(*os.File), "photo")
         //write case file
     }
 

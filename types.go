@@ -151,9 +151,308 @@ type Update struct {
     ChosenInlineResult *ChosenInlineResult `json:"chosen_inline_result"`
 }
 
+type InlineKeyboardButton struct {
+    Text string `json:"text"`
+    Url string `json:"url,omitempty"`
+    CallbackData string `json:"callback_data,omitempty"`
+    SwitchInlineQuery string `json:"switch_inline_query,omitempty"`
+}
+
+type InlineKeyboardMarkup struct {
+    InlineKeyboard [][]*InlineKeyboardButton `json:"inline_keyboard"`
+}
+
+type CallbackQuery struct {
+    Id string `json:"id"`
+    From *User `json:"from"`
+    Message *Message `json:"message,omitempty"`
+    InlineMessageId string `json:"inline_message_id,omitempty"`
+    Data string `json:"data"`
+}
+
+type AnswerInlineQuery struct {
+    InlineQueryId string `json:"inline_query_id"`
+    Results []*interface{} `json:"results"`
+    CacheTime int64 `json:"cache_time,omitempty"`
+    IsPersonal bool `json:"is_personal,omitempty"`
+    NextOffset string `json:"next_offset,omitempty"`
+    SwitchPmText string `json:"switch_pm_text,omitempty"`
+    SwitchPmParameter string `json:"switch_pm_parameter,omitempty"`
+}
+
+
+type InlineQueryResultArticle struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Title string `json:"title"`
+    InputMessageContent *interface{} `json:"input_message_content"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    Url string `json:"url,omitempty"`
+    HideUrl bool `json:"hide_ur,omitempty"`
+    Description string `json:"description,omitempty"`
+    ThumbUrl string `json:"thumb_url,omitempty"`
+    ThumbWidth int64 `json:"thumb_width,omitempty"`
+    ThumbHeight int64 `json:"thumb_height,omitempty"`
+
+}
+
+type InlineQueryResultPhoto struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    PhotoUrl string `json:"photo_url"`
+    ThumbUrl string `json:"thumb_url"`
+    PhotoWidth int64 `json:"photo_width,omitempty"`
+    PhotoHeight int64 `json:"photo_height,omitempty"`
+    Title string `json:"title,omitempty"`
+    Description string `json:"description,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content"`
+}
+
+type InlineQueryResultGif struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    GifUrl string `json:"gif_url"`
+    GifWidth int64 `json:"gif_width,omitempty"`
+    GifHeight int64 `json:"gif_height,omitempty"`
+    ThumbUrl string `json:"thumb_url"`
+    Title string `json:"title,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultMpeg4Gif struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Mpeg4Url string `json:"mpeg4_url"`
+    Mpeg4Width int64 `json:"mpeg4_width,omitempty"`
+    Mpeg4Height int64 `json:"mpeg4_height,omitempty"`
+    ThumbUrl string `json:"thumb_url"`
+    Title string `json:"title,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+}
+
+type InlineQueryResultVideo struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    VideoUrl string `json:"video_url"`
+    MimeType string `json:"mime_type"`
+    ThumbUrl string `json:"thumb_url"`
+    Title string `json:"title"`
+    Caption string `json:"caption,omitempty"`
+    VideoWidth int64 `json:"video_width,omitempty"`
+    VideoHeight int64 `json:"video_height,omitempty"`
+    VideoDuration int64 `json:"video_duration,omitempty"`
+    Description string `json:"description,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultAudio struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    AudioUrl string `json:"audio_url"`
+    Title string `json:"title"`
+    Performer string `json:"performer,omitempty"`
+    AudioDuration int64 `json:"audio_duration,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+}
+
+type InlineQueryResultVoice struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    VoiceUrl string `json:"voice_url"`
+    Title string `json:"title"`
+    VoiceDuration int64 `json:"voice_duration,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultDocument struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Title string `json:"title"`
+    Caption string `json:"caption,omitempty"`
+    DocumentUrl string `json:"document_url"`
+    MimeType string `json:"mime_type"`
+    Description string `json:"description,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    ThumbUrl string `json:"thumb_url,omitempty"`
+    ThumbWidth int64 `json:"thumb_width,omitempty"`
+    ThumbHeight int64 `json:"thumb_height,omitempty"`
+
+}
+
+type InlineQueryResultLocation struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Latitude string `json:"latitude"`
+    Longitude string `json:"longitude"`
+    Title string `json:"title"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    ThumbUrl string `json:"thumb_url,omitempty"`
+    ThumbWidth int64 `json:"thumb_width,omitempty"`
+    ThumbHeight int64 `json:"thumb_height,omitempty"`
+
+}
+
+type InlineQueryResultVenue struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Latitude float64 `json:"latitude"`
+    Longitude float64 `json:"longitude"`
+    Title string `json:"title"`
+    Address string `json:"address"`
+    FoursquareId string `json:"foursquare_id,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    ThumbUrl string `json:"thumb_url,omitempty"`
+    ThumbWidth int64 `json:"thumb_width,omitempty"`
+    ThumbHeight int64 `json:"thumb_height,omitempty"`
+
+}
+
+type InlineQueryResultContact struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    PhoneNumber string `json:"phone_number"`
+    FirstName string `json:"first_name"`
+    LastName string `json:"last_name,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    ThumbUrl string `json:"thumb_url,omitempty"`
+    ThumbWidth int64 `json:"thumb_width,omitempty"`
+    ThumbHeight int64 `json:"thumb_height,omitempty"`
+
+}
+
+type InlineQueryResultCachedPhoto struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    PhotoFile_id string `json:"photo_file_id"`
+    Title string `json:"title,omitempty"`
+    Description string `json:"description,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedGif struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    GifFile_id string `json:"gif_file_id"`
+    Title string `json:"title,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedMpeg4Gif struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Mpeg4File_id string `json:"mpeg4_file_id"`
+    Title string `json:"title,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedSticker struct {
+    Type string `json:"type"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedDocument struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    Title string `json:"title"`
+    DocumentFile_id string `json:"document_file_id"`
+    Description string `json:"description,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedVideo struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    VideoFile_id string `json:"video_file_id"`
+    Title string `json:"title"`
+    Description string `json:"description,omitempty"`
+    Caption string `json:"caption,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedVoice struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    VoiceFile_id string `json:"voice_file_id"`
+    Title string `json:"title"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+type InlineQueryResultCachedAudio struct {
+    Type string `json:"type"`
+    Id string `json:"id"`
+    AudioFile_id string `json:"audio_file_id"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+
+}
+
+
+type InputTextMessageContent struct {
+    MessageText string `json:"message_text"`
+    ParseMode string `json:"parse_mode,omitempty"`
+    DisableWebPagePreview bool `json:"disable_web_page_previe,omitempty"`
+
+}
+
+type InputLocationMessageContent struct {
+    Latitude float64 `json:"latitude"`
+    Longitude float64 `json:"longitude"`
+}
+
+type InputVenueMessageContent struct {
+    Latitude float64 `json:"latitude"`
+    Longitude float64 `json:"longitude"`
+    Title string `json:"title"`
+    Address string `json:"address"`
+    FoursquareId string `json:"foursquare_id,omitempty"`
+}
+
+type InputContactMessageContent struct {
+    PhoneNumber string `json:"phone_number"`
+    FirstName string `json:"first_name"`
+    LastName string `json:"last_name,omitempty"`
+
+}
+
 type ChosenInlineResult struct {
     ResultId string `json:"result_id"`
     From *User `json:"from"`
+    Location *Location `json:location,omitempty"`
+    InlineMessageId string `json:"inline_message_id,omitempty"`
     Query string `json:"query"`
 }
 

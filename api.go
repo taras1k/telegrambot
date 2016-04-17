@@ -20,56 +20,96 @@ type API struct {
     Client *http.Client
 }
 
-func (api *API) callGetMethod(method string) (*[]byte, error) {
+type APIResult struct {
+    Ok bool `json:"ok"`
+    Result json.RawMessage `json:"result"`
+    ErrorCode int64 `json:"error_code"`
+    Description string `json:"description"`
+}
+
+type APIError struct {
+    ErrorCode int64 `json:"error_code"`
+    Description string `json:"description"`
+}
+
+func (e APIError) Error() string{
+    return fmt.Sprintf("Code:%i Description:%s", e.ErrorCode, e.Description)
+}
+
+func (api *API) callGetMethod(method string, ret interface{})  error {
     url := fmt.Sprintf(base_url, api.Token, method)
     resp, err :=  api.Client.Get(url)
     if err != nil {
-        return nil, err
+        return err
     }
     defer resp.Body.Close()
     data, err := ioutil.ReadAll(resp.Body)
     if err != nil {
-        return nil, err
+        return err
     }
-    return &data, nil
+    res := new(APIResult)
+    err = json.Unmarshal(data, &res)
+    if err != nil {
+        return  err
+    }
+    if !res.Ok {
+        return APIError{res.ErrorCode, res.Description}
+    }
+    err = json.Unmarshal(res.Result, ret)
+    if err != nil {
+        return  err
+    }
+    return nil
 }
 
-func (api *API) callPostMethod(method string, obj interface{}) (*[]byte, error) {
+func (api *API) callPostMethod(method string, obj, ret interface{}) error {
     url := fmt.Sprintf(base_url, api.Token, method)
     jsonStr, err := json.Marshal(obj)
     if err != nil {
-        return nil, err
+        return err
     }
     req, err := http.NewRequest("POST", url, bytes.NewBuffer(jsonStr))
     req.Header.Set("Content-Type", "application/json")
     resp, err := api.Client.Do(req)
     if err != nil {
-        return nil, err
+        return err
     }
     defer resp.Body.Close()
     data, err := ioutil.ReadAll(resp.Body)
     if err != nil {
-        return nil, err
+        return err
     }
-    return &data, nil
+    res := new(APIResult)
+    err = json.Unmarshal(data, &res)
+    if err != nil {
+        return  err
+    }
+    if !res.Ok {
+        return APIError{res.ErrorCode, res.Description}
+    }
+    err = json.Unmarshal(res.Result, ret)
+    if err != nil {
+        return  err
+    }
+    return nil
 }
 
-func (api *API) callPostMultipartMethod(method string, params map[string]string, f *os.File, paramName string) (*[]byte, error) {
+func (api *API) callPostMultipartMethod(method string, params map[string]string, f *os.File, paramName string, ret interface{})  error {
     url := fmt.Sprintf(base_url, api.Token, method)
     fileContents, err := ioutil.ReadAll(f)
     if err != nil {
-        return nil, err
+        return err
     }
     fi, err := f.Stat()
     if err != nil {
-        return nil, err
+        return err
     }
     f.Close()
     body := new(bytes.Buffer)
     writer := multipart.NewWriter(body)
     part, err := writer.CreateFormFile(paramName, fi.Name())
     if err != nil {
-        return nil, err
+        return err
     }
     part.Write(fileContents)
     for key, val := range params {
@@ -77,21 +117,34 @@ func (api *API) callPostMultipartMethod(method string, params map[string]string,
     }
     err = writer.Close()
     if err != nil {
-        return nil, err
+        return err
     }
     req, err := http.NewRequest("POST", url, body)
     req.Header.Set("Content-Type", writer.FormDataContentType())
     resp, err := api.Client.Do(req)
     if err != nil {
-        return nil, err
+        return err
     }
     defer resp.Body.Close()
     data, err := ioutil.ReadAll(resp.Body)
     if err != nil {
-        return nil, err
+        return err
     }
-    return &data, nil
+    res := new(APIResult)
+    err = json.Unmarshal(data, &res)
+    if err != nil {
+        return  err
+    }
+    if !res.Ok {
+        return APIError{res.ErrorCode, res.Description}
+    }
+    err = json.Unmarshal(res.Result, ret)
+    if err != nil {
+        return  err
+    }
+    return  nil
 }
+
 func CreateAPI(token string) *API {
     api := API{Token: token}
     tr := &http.Transport{

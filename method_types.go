@@ -26,4 +26,8 @@ type SendPhotoObj struct {
     ReplyMarkup *interface{} `json:"reply_markup,omitempty"`
 }
 
-
+type UpdateObj struct {
+    Offset int64 `json:"offset,omitempty"`
+    Limit int64 `json:"limit,omitempty"`
+    Timout int64 `json:"timeout,omitempty"`
+}

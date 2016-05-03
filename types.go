@@ -172,7 +172,7 @@ type CallbackQuery struct {
 
 type AnswerInlineQuery struct {
     InlineQueryId string `json:"inline_query_id"`
-    Results []*interface{} `json:"results"`
+    Results []interface{} `json:"results"`
     CacheTime int64 `json:"cache_time,omitempty"`
     IsPersonal bool `json:"is_personal,omitempty"`
     NextOffset string `json:"next_offset,omitempty"`
@@ -185,7 +185,7 @@ type InlineQueryResultArticle struct {
     Type string `json:"type"`
     Id string `json:"id"`
     Title string `json:"title"`
-    InputMessageContent *interface{} `json:"input_message_content"`
+    InputMessageContent interface{} `json:"input_message_content"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
     Url string `json:"url,omitempty"`
     HideUrl bool `json:"hide_ur,omitempty"`
@@ -207,7 +207,7 @@ type InlineQueryResultPhoto struct {
     Description string `json:"description,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content"`
+    InputMessageContent interface{} `json:"input_message_content"`
 }
 
 type InlineQueryResultGif struct {
@@ -220,7 +220,7 @@ type InlineQueryResultGif struct {
     Title string `json:"title,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -234,7 +234,7 @@ type InlineQueryResultMpeg4Gif struct {
     Title string `json:"title,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 }
 
 type InlineQueryResultVideo struct {
@@ -250,7 +250,7 @@ type InlineQueryResultVideo struct {
     VideoDuration int64 `json:"video_duration,omitempty"`
     Description string `json:"description,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -262,7 +262,7 @@ type InlineQueryResultAudio struct {
     Performer string `json:"performer,omitempty"`
     AudioDuration int64 `json:"audio_duration,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 }
 
 type InlineQueryResultVoice struct {
@@ -272,7 +272,7 @@ type InlineQueryResultVoice struct {
     Title string `json:"title"`
     VoiceDuration int64 `json:"voice_duration,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -285,7 +285,7 @@ type InlineQueryResultDocument struct {
     MimeType string `json:"mime_type"`
     Description string `json:"description,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
     ThumbUrl string `json:"thumb_url,omitempty"`
     ThumbWidth int64 `json:"thumb_width,omitempty"`
     ThumbHeight int64 `json:"thumb_height,omitempty"`
@@ -299,7 +299,7 @@ type InlineQueryResultLocation struct {
     Longitude string `json:"longitude"`
     Title string `json:"title"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
     ThumbUrl string `json:"thumb_url,omitempty"`
     ThumbWidth int64 `json:"thumb_width,omitempty"`
     ThumbHeight int64 `json:"thumb_height,omitempty"`
@@ -315,7 +315,7 @@ type InlineQueryResultVenue struct {
     Address string `json:"address"`
     FoursquareId string `json:"foursquare_id,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
     ThumbUrl string `json:"thumb_url,omitempty"`
     ThumbWidth int64 `json:"thumb_width,omitempty"`
     ThumbHeight int64 `json:"thumb_height,omitempty"`
@@ -329,7 +329,7 @@ type InlineQueryResultContact struct {
     FirstName string `json:"first_name"`
     LastName string `json:"last_name,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
     ThumbUrl string `json:"thumb_url,omitempty"`
     ThumbWidth int64 `json:"thumb_width,omitempty"`
     ThumbHeight int64 `json:"thumb_height,omitempty"`
@@ -344,7 +344,7 @@ type InlineQueryResultCachedPhoto struct {
     Description string `json:"description,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -355,7 +355,7 @@ type InlineQueryResultCachedGif struct {
     Title string `json:"title,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -366,14 +366,14 @@ type InlineQueryResultCachedMpeg4Gif struct {
     Title string `json:"title,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
 type InlineQueryResultCachedSticker struct {
     Type string `json:"type"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -385,7 +385,7 @@ type InlineQueryResultCachedDocument struct {
     Description string `json:"description,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -397,7 +397,7 @@ type InlineQueryResultCachedVideo struct {
     Description string `json:"description,omitempty"`
     Caption string `json:"caption,omitempty"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -407,7 +407,7 @@ type InlineQueryResultCachedVoice struct {
     VoiceFile_id string `json:"voice_file_id"`
     Title string `json:"title"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 
@@ -416,7 +416,7 @@ type InlineQueryResultCachedAudio struct {
     Id string `json:"id"`
     AudioFile_id string `json:"audio_file_id"`
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
-    InputMessageContent *interface{} `json:"input_message_content,omitempty"`
+    InputMessageContent interface{} `json:"input_message_content,omitempty"`
 
 }
 

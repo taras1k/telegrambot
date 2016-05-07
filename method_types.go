@@ -26,6 +26,35 @@ type SendPhotoObj struct {
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
 }
 
+type SendAudioObj struct {
+    ChatID string `json:"chat_id"`
+    Audio interface{} `json:"audio"`
+    Duration int64 `json:"duration,omitempty"`
+    Performer string `json:performer,omitempty"`
+    Title string `json:title,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+type SendDocumentObj struct {
+    ChatID string `json:"chat_id"`
+    Document interface{} `json:"document"`
+    Caption string `json:caption,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+type SendStickerObj struct {
+    ChatID string `json:"chat_id"`
+    Sticker interface{} `json:"sticker"`
+    Caption string `json:caption,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
 type UpdateObj struct {
     Offset int64 `json:"offset,omitempty"`
     Limit int64 `json:"limit,omitempty"`

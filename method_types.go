@@ -55,6 +55,60 @@ type SendStickerObj struct {
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
 }
 
+type SendVideoObj struct {
+    ChatID string `json:"chat_id"`
+    Video interface{} `json:"sticker"`
+    Duration int64 `json:"duration,omitempty"`
+    Width int64 `json:"width,omitempty"`
+    Height int64 `json:"width,omitempty"`
+    Caption string `json:caption,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+type SendVoiceObj struct {
+    ChatID string `json:"chat_id"`
+    Voice interface{} `json:"sticker"`
+    Duration int64 `json:"duration,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+type SendLocationObj struct {
+    ChatID string `json:"chat_id"`
+    Latitude float64 `json:"latitude"`
+    Longitude float64 `json:"longitude"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+type SendVenueObj struct {
+    ChatID string `json:"chat_id"`
+    Latitude float64 `json:"latitude"`
+    Longitude float64 `json:"longitude"`
+    Title string `json:title"`
+    Adress string `json:adress"`
+    FoursquareId string `json:foursquare_id,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+type SendContactObj struct {
+    ChatID string `json:"chat_id"`
+    PhoneNumber string `json:"phone_number"`
+    FirstName string `json:"first_name"`
+    LastName string `json:"last_name,omitempty"`
+    DisableNotification bool `json:"disable_notification,omitempty"`
+    ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
+    ReplyMarkup interface{} `json:"reply_markup,omitempty"`
+}
+
+
+
 type UpdateObj struct {
     Offset int64 `json:"offset,omitempty"`
     Limit int64 `json:"limit,omitempty"`

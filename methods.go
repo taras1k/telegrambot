@@ -184,6 +184,105 @@ func (api *API) SendSticker(st *SendStickerObj) (*Message, error) {
     return &ret, nil
 }
 
+func (api *API) SendVideo(vid *SendVideoObj) (*Message, error) {
+    var err error
+    var ret Message
+    switch vid.Video.(type) {
+        default:
+            return nil, errors.New("Video should be vidring or file")
+        case string:
+            err = api.callPostMethod("sendVideo", vid, &ret)
+        case *os.File:
+            params := make(map[string]string)
+            params["chat_id"] = vid.ChatID
+            if vid.Caption != ""{
+                params["caption"] = vid.Caption
+            }
+            if vid.DisableNotification == true {
+                params["disable_notification"] = "True"
+            }
+            if vid.DisableNotification == false {
+                params["disable_notification"] = "False"
+            }
+            if vid.ReplyToMessageId > 0{
+                params["reply_to_message_id"] = string(vid.ReplyToMessageId)
+            }
+            if vid.Duration > 0{
+                params["duration"] = string(vid.Duration)
+            }
+            if vid.Width > 0{
+                params["width"] = string(vid.Width)
+            }
+            if vid.Height > 0{
+                params["height"] = string(vid.Height)
+            }
+
+            if vid.ReplyMarkup != nil {
+                markup, err := json.Marshal(vid.ReplyMarkup)
+                if err != nil {
+                    return nil, errors.New("bad reply markup")
+                }
+                params["reply_markup"] = string(markup)
+            }
+            err = api.callPostMultipartMethod("sendVideo", params, vid.Video.(*os.File), "video", &ret)
+            if err != nil {
+                return nil, err
+            }
+    }
+    return &ret, nil
+}
+
+func (api *API) SendVoice(voice *SendVoiceObj) (*Message, error) {
+    var err error
+    var ret Message
+    switch voice.Voice.(type) {
+        default:
+            return nil, errors.New("Voice should be voicering or file")
+        case string:
+            err = api.callPostMethod("sendVoice", voice, &ret)
+        case *os.File:
+            params := make(map[string]string)
+            params["chat_id"] = voice.ChatID
+            if voice.DisableNotification == true {
+                params["disable_notification"] = "True"
+            }
+            if voice.DisableNotification == false {
+                params["disable_notification"] = "False"
+            }
+            if voice.ReplyToMessageId > 0{
+                params["reply_to_message_id"] = string(voice.ReplyToMessageId)
+            }
+            if voice.Duration > 0{
+                params["duration"] = string(voice.Duration)
+            }
+
+            if voice.ReplyMarkup != nil {
+                markup, err := json.Marshal(voice.ReplyMarkup)
+                if err != nil {
+                    return nil, errors.New("bad reply markup")
+                }
+                params["reply_markup"] = string(markup)
+            }
+            err = api.callPostMultipartMethod("sendVoice", params, voice.Voice.(*os.File), "voice", &ret)
+            if err != nil {
+                return nil, err
+            }
+    }
+    return &ret, nil
+}
+
+func (api *API) SendLocation(loc *SendLocationObj) (*Message, error) {
+    var ret Message
+    err := api.callPostMethod("sendLocation", loc, &ret)
+    return &ret, err
+}
+
+func (api *API) SendVenue(ven *SendVenueObj) (*Message, error) {
+    var ret Message
+    err := api.callPostMethod("sendVenue", ven, &ret)
+    return &ret, err
+}
+
 func (api *API) GetUpdates(u *UpdateObj) (*[]Update, error) {
     var ret []Update
     err := api.callPostMethod("getUpdates", u, &ret)

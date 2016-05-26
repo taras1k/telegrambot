@@ -107,6 +107,11 @@ type SendContactObj struct {
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
 }
 
+type SendChatActionObj struct {
+    ChatID string `json:"chat_id"`
+    Action string `json:"action"`
+}
+
 
 
 type UpdateObj struct {

@@ -283,6 +283,33 @@ func (api *API) SendVenue(ven *SendVenueObj) (*Message, error) {
     return &ret, err
 }
 
+func (api *API) SendContact(con *SendContactObj) (*Message, error) {
+    var ret Message
+    err := api.callPostMethod("sendContact", con, &ret)
+    return &ret, err
+}
+
+func (api *API) SendChatActionObj(ca *SendChatActionObj) (interface{}, error) {
+    var ret interface{}
+    var err error
+    switch ca.Action {
+        case
+            "typing",
+            "upload_photo",
+            "record_video",
+            "upload_video",
+            "record_audio",
+            "upload_audio",
+            "upload_document",
+            "find_location":  err = api.callPostMethod("sendChatAction", ca, &ret)
+        default:
+            err = errors.New("chat Action not allowed")
+    }
+
+       return ret, err
+}
+
+
 func (api *API) GetUpdates(u *UpdateObj) (*[]Update, error) {
     var ret []Update
     err := api.callPostMethod("getUpdates", u, &ret)

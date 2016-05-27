@@ -184,6 +184,17 @@ type EditMessageReplyMarkupObj struct {
     ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
 }
 
+
+type AnswerInlineQueryObj struct {
+    InlineQueryId string `json:"inline_query_id"`
+    Results []interface{} `json:"results"`
+    CacheTime int64 `json:"cache_time,omitempty"`
+    IsPersonal bool `json:"is_personal,omitempty"`
+    NextOffset string `json:"next_offset,omitempty"`
+    SwitchPmText string `json:"switch_pm_text,omitempty"`
+    SwitchPmParameter string `json:"switch_pm_parameter,omitempty"`
+}
+
 type UpdateObj struct {
     Offset int64 `json:"offset,omitempty"`
     Limit int64 `json:"limit,omitempty"`

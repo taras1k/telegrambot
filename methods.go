@@ -390,6 +390,14 @@ func (api *API) EditMessageReplyMarkup(rm *EditMessageReplyMarkupObj) (interface
     return &ret, err
 }
 
+
+//#TODO test this
+func (api *API) AnswerInlineQuery(iq *AnswerCallbackQueryObj) (*bool, error) {
+    var ret bool
+    err := api.callPostMethod("answerCallbackQuery", iq, &ret)
+    return &ret, err
+}
+
 func (api *API) GetUpdates(u *UpdateObj) (*[]Update, error) {
     var ret []Update
     err := api.callPostMethod("getUpdates", u, &ret)

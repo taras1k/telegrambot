@@ -189,7 +189,7 @@ func (api *API) SendVideo(vid *SendVideoObj) (*Message, error) {
     var ret Message
     switch vid.Video.(type) {
         default:
-            return nil, errors.New("Video should be vidring or file")
+            return nil, errors.New("Video should be string or file")
         case string:
             err = api.callPostMethod("sendVideo", vid, &ret)
         case *os.File:
@@ -396,6 +396,25 @@ func (api *API) AnswerInlineQuery(iq *AnswerCallbackQueryObj) (*bool, error) {
     var ret bool
     err := api.callPostMethod("answerCallbackQuery", iq, &ret)
     return &ret, err
+}
+
+func (api *API) SetWebhook(wh *SetWebhookObj) (interface{}, error) {
+    var err error
+    var ret interface{}
+    switch wh.Certificate.(type) {
+        default:
+            return nil, errors.New("Certificate should be nil or file")
+        case nil:
+            err = api.callPostMethod("setWebhook", wh, &ret)
+        case *os.File:
+            params := make(map[string]string)
+            params["url"] = wh.Url
+            err = api.callPostMultipartMethod("setWebhook", params, wh.Certificate.(*os.File), "certificate", &ret)
+            if err != nil {
+                return nil, err
+            }
+    }
+    return &ret, nil
 }
 
 func (api *API) GetUpdates(u *UpdateObj) (*[]Update, error) {

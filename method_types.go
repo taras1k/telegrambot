@@ -57,7 +57,7 @@ type SendStickerObj struct {
 
 type SendVideoObj struct {
     ChatId string `json:"chat_id"`
-    Video interface{} `json:"sticker"`
+    Video interface{} `json:"video"`
     Duration int64 `json:"duration,omitempty"`
     Width int64 `json:"width,omitempty"`
     Height int64 `json:"width,omitempty"`
@@ -69,7 +69,7 @@ type SendVideoObj struct {
 
 type SendVoiceObj struct {
     ChatId string `json:"chat_id"`
-    Voice interface{} `json:"sticker"`
+    Voice interface{} `json:"voice"`
     Duration int64 `json:"duration,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
@@ -199,4 +199,9 @@ type UpdateObj struct {
     Offset int64 `json:"offset,omitempty"`
     Limit int64 `json:"limit,omitempty"`
     Timout int64 `json:"timeout,omitempty"`
+}
+
+type SetWebhookObj struct {
+    Url string `json:"url"`
+    Certificate interface{} `json:"interface,omitempty"`
 }

@@ -34,7 +34,7 @@ func (api *API) SendPhoto(ph *SendPhotoObj) (*Message, error) {
             err = api.callPostMethod("sendPhoto", ph, &ret)
         case *os.File:
             params := make(map[string]string)
-            params["chat_id"] = ph.ChatID
+            params["chat_id"] = ph.ChatId
             params["caption"] = ph.Caption
             if ph.DisableNotification == true {
                 params["disable_notification"] = "True"
@@ -71,7 +71,7 @@ func (api *API) SendAudio(au *SendAudioObj) (*Message, error) {
             err = api.callPostMethod("sendAudio", au, &ret)
         case *os.File:
             params := make(map[string]string)
-            params["chat_id"] = au.ChatID
+            params["chat_id"] = au.ChatId
             if au.Duration > 0 {
                 params["duration"] = string(au.Duration)
             }
@@ -116,7 +116,7 @@ func (api *API) SendDocument(doc *SendDocumentObj) (*Message, error) {
             err = api.callPostMethod("sendDocument", doc, &ret)
         case *os.File:
             params := make(map[string]string)
-            params["chat_id"] = doc.ChatID
+            params["chat_id"] = doc.ChatId
             if doc.Caption != ""{
                 params["caption"] = doc.Caption
             }
@@ -155,7 +155,7 @@ func (api *API) SendSticker(st *SendStickerObj) (*Message, error) {
             err = api.callPostMethod("sendSticker", st, &ret)
         case *os.File:
             params := make(map[string]string)
-            params["chat_id"] = st.ChatID
+            params["chat_id"] = st.ChatId
             if st.Caption != ""{
                 params["caption"] = st.Caption
             }
@@ -194,7 +194,7 @@ func (api *API) SendVideo(vid *SendVideoObj) (*Message, error) {
             err = api.callPostMethod("sendVideo", vid, &ret)
         case *os.File:
             params := make(map[string]string)
-            params["chat_id"] = vid.ChatID
+            params["chat_id"] = vid.ChatId
             if vid.Caption != ""{
                 params["caption"] = vid.Caption
             }
@@ -242,7 +242,7 @@ func (api *API) SendVoice(voice *SendVoiceObj) (*Message, error) {
             err = api.callPostMethod("sendVoice", voice, &ret)
         case *os.File:
             params := make(map[string]string)
-            params["chat_id"] = voice.ChatID
+            params["chat_id"] = voice.ChatId
             if voice.DisableNotification == true {
                 params["disable_notification"] = "True"
             }
@@ -309,6 +309,65 @@ func (api *API) SendChatActionObj(ca *SendChatActionObj) (interface{}, error) {
        return ret, err
 }
 
+func (api *API) GetUserProfilePhotos(upp *GetUserProfilePhotosObj) (*UserProfilePhotos, error) {
+    var ret UserProfilePhotos
+    err := api.callPostMethod("getUserProfilePhotos", upp, &ret)
+    return &ret, err
+}
+
+func (api *API) GetFile(f *GetFileObj) (*File, error) {
+    var ret File
+    err := api.callPostMethod("getFile", f, &ret)
+    return &ret, err
+}
+
+func (api *API) KickChatMember(kcm *KickChatMemberObj) (*bool, error) {
+    var ret bool
+    err := api.callPostMethod("kickChatMember", kcm, &ret)
+    return &ret, err
+}
+
+func (api *API) LeaveChat(lc *LeaveChatObj) (*bool, error) {
+    var ret bool
+    err := api.callPostMethod("leaveChat", ret, &ret)
+    return &ret, err
+}
+
+func (api *API) UnbanChatMember(ucm *UnbanChatMemberObj) (*bool, error) {
+    var ret bool
+    err := api.callPostMethod("unbanChatMember", ucm, &ret)
+    return &ret, err
+}
+
+func (api *API) GetChat(c *GetChatObj) (*Chat, error) {
+    var ret Chat
+    err := api.callPostMethod("getChat", c, &ret)
+    return &ret, err
+}
+
+func (api *API) GetChatAdministrators(ca *GetChatAdministratorsObj) (*[]ChatMember, error) {
+    var ret []ChatMember
+    err := api.callPostMethod("getChatAdministrators", ca, &ret)
+    return &ret, err
+}
+
+func (api *API) GetChatMembersCount(cmc *GetChatMembersCountObj) (*int64, error) {
+    var ret int64
+    err := api.callPostMethod("getChatMembersCount", cmc, &ret)
+    return &ret, err
+}
+
+func (api *API) GetChatMember(cm *GetChatMemberObj) (*ChatMember, error) {
+    var ret ChatMember
+    err := api.callPostMethod("getChatMember", cm, &ret)
+    return &ret, err
+}
+
+func (api *API) AnswerCallbackQuery(qc *AnswerCallbackQueryObj) (*bool, error) {
+    var ret bool
+    err := api.callPostMethod("answerCallbackQuery", qc, &ret)
+    return &ret, err
+}
 
 func (api *API) GetUpdates(u *UpdateObj) (*[]Update, error) {
     var ret []Update

@@ -1,7 +1,7 @@
 package telegrambot
 
 type SendMessageObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Text string `json:"text"`
     ParseMode string `json:"parse_mode"`
     DisableWebPagePreview bool `json:"disable_web_page_preview,omitempty"`
@@ -11,14 +11,14 @@ type SendMessageObj struct {
 }
 
 type ForwardMessageObj struct {
-    ChatID string `json:"chat_id"`
-    FromChatID string `json:"from_chat_id"`
-    MessageID int64 `json:"message_id"`
+    ChatId string `json:"chat_id"`
+    FromChatId string `json:"from_chat_id"`
+    MessageId int64 `json:"message_id"`
     DisableNotification bool `json:"disable_notification,omitempty"`
 }
 
 type SendPhotoObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Photo interface{} `json:"photo"`
     Caption string `json:caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
@@ -27,7 +27,7 @@ type SendPhotoObj struct {
 }
 
 type SendAudioObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Audio interface{} `json:"audio"`
     Duration int64 `json:"duration,omitempty"`
     Performer string `json:performer,omitempty"`
@@ -38,7 +38,7 @@ type SendAudioObj struct {
 }
 
 type SendDocumentObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Document interface{} `json:"document"`
     Caption string `json:caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
@@ -47,7 +47,7 @@ type SendDocumentObj struct {
 }
 
 type SendStickerObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Sticker interface{} `json:"sticker"`
     Caption string `json:caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
@@ -56,7 +56,7 @@ type SendStickerObj struct {
 }
 
 type SendVideoObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Video interface{} `json:"sticker"`
     Duration int64 `json:"duration,omitempty"`
     Width int64 `json:"width,omitempty"`
@@ -68,7 +68,7 @@ type SendVideoObj struct {
 }
 
 type SendVoiceObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Voice interface{} `json:"sticker"`
     Duration int64 `json:"duration,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
@@ -77,7 +77,7 @@ type SendVoiceObj struct {
 }
 
 type SendLocationObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Latitude float64 `json:"latitude"`
     Longitude float64 `json:"longitude"`
     DisableNotification bool `json:"disable_notification,omitempty"`
@@ -86,7 +86,7 @@ type SendLocationObj struct {
 }
 
 type SendVenueObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Latitude float64 `json:"latitude"`
     Longitude float64 `json:"longitude"`
     Title string `json:title"`
@@ -98,7 +98,7 @@ type SendVenueObj struct {
 }
 
 type SendContactObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     PhoneNumber string `json:"phone_number"`
     FirstName string `json:"first_name"`
     LastName string `json:"last_name,omitempty"`
@@ -108,11 +108,56 @@ type SendContactObj struct {
 }
 
 type SendChatActionObj struct {
-    ChatID string `json:"chat_id"`
+    ChatId string `json:"chat_id"`
     Action string `json:"action"`
 }
 
+type GetUserProfilePhotosObj struct {
+    UserId int64 `json:"user_id"`
+    Offset int64 `json:"offset,omitempty"`
+    Limit int64 `json:"limit,omitempty"`
+}
 
+type GetFileObj struct {
+    FileId string `json:"file_id"`
+}
+
+type KickChatMemberObj struct {
+    ChatId string `json:"chat_id"`
+    UserId int64 `json:"user_id"`
+}
+
+type LeaveChatObj struct {
+    ChatId string `json:"chat_id"`
+}
+
+type UnbanChatMemberObj struct {
+    ChatId string `json:"chat_id"`
+    UserId int64 `json:"user_id"`
+}
+
+type GetChatObj struct {
+    ChatId string `json:"chat_id"`
+}
+
+type GetChatAdministratorsObj struct {
+    ChatId string `json:"chat_id"`
+}
+
+type GetChatMembersCountObj struct {
+    ChatId string `json:"chat_id"`
+}
+
+type GetChatMemberObj struct {
+    ChatId string `json:"chat_id"`
+    UserId int64 `json:"user_id"`
+}
+
+type AnswerCallbackQueryObj struct {
+    CallbackQueryId string `json:"callback_query_id"`
+    Text string `json:"text,omitempty"`
+    ShowAlert bool `json:"show_alert,omitempty"`
+}
 
 type UpdateObj struct {
     Offset int64 `json:"offset,omitempty"`

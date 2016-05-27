@@ -159,6 +159,31 @@ type AnswerCallbackQueryObj struct {
     ShowAlert bool `json:"show_alert,omitempty"`
 }
 
+type EditMessageTextObj struct {
+    ChatId string `json:"chat_id,omitempty"`
+    MessageId string `json:"message_id,omitempty"`
+    InlineMessageId string `json:"inline_message_id,omitempty"`
+    Text string `json:"text"`
+    ParseMode string `json:"parse_mode,omitempty"`
+    DisableWebPagePreview bool `json:"disable_web_page_preview,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+}
+
+type EditMessageCaptionObj struct {
+    ChatId string `json:"chat_id,omitempty"`
+    MessageId string `json:"message_id,omitempty"`
+    InlineMessageId string `json:"inline_message_id,omitempty"`
+    Caption string `json:"caption"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+}
+
+type EditMessageReplyMarkupObj struct {
+    ChatId string `json:"chat_id,omitempty"`
+    MessageId string `json:"message_id,omitempty"`
+    InlineMessageId string `json:"inline_message_id,omitempty"`
+    ReplyMarkup *InlineKeyboardMarkup `json:"reply_markup,omitempty"`
+}
+
 type UpdateObj struct {
     Offset int64 `json:"offset,omitempty"`
     Limit int64 `json:"limit,omitempty"`

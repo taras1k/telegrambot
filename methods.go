@@ -369,6 +369,27 @@ func (api *API) AnswerCallbackQuery(qc *AnswerCallbackQueryObj) (*bool, error) {
     return &ret, err
 }
 
+//#TODO test this function for ret values
+func (api *API) EditMessageText(mt *EditMessageTextObj) (interface{}, error) {
+    var ret interface{}
+    err := api.callPostMethod("editMessageText", mt, &ret)
+    return &ret, err
+}
+
+//#TODO test this function for ret values
+func (api *API) EditMessageCaption(mc *EditMessageCaptionObj) (interface{}, error) {
+    var ret interface{}
+    err := api.callPostMethod("editMessageCaption", mc, &ret)
+    return &ret, err
+}
+
+//#TODO test this function for ret values
+func (api *API) EditMessageReplyMarkup(rm *EditMessageReplyMarkupObj) (interface{}, error) {
+    var ret interface{}
+    err := api.callPostMethod("editMessageReplyMarkup", rm, &ret)
+    return &ret, err
+}
+
 func (api *API) GetUpdates(u *UpdateObj) (*[]Update, error) {
     var ret []Update
     err := api.callPostMethod("getUpdates", u, &ret)

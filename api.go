@@ -1,3 +1,13 @@
+/*
+Package implements API for telegram bots
+usage example:
+ api = telegrambot.CreateAPI("yourtoken")
+ user, err := api.GetMe()
+
+
+All methods has same names as in offical documentation and returns same types
+https://core.telegram.org/bots
+*/
 package telegrambot
 
 import (

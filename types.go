@@ -152,8 +152,12 @@ type InlineQuery struct {
 type Update struct {
     UpdateId int64 `json:"update_id"`
     Message *Message `json:"message,omitempty"`
+    EditedMessage *Message `json:"edited_message,omitempty"`
+    ChanelPost *Message `json:"chanel_post,omitempty"`
+    EditedChanelPost *Message `json:"edited_chanel_post,omitempty"`
     InlineQuery *InlineQuery `json:"inline_query,omitempty"`
-    ChosenInlineResult *ChosenInlineResult `json:"chosen_inline_result"`
+    ChosenInlineResult *ChosenInlineResult `json:"chosen_inline_result,omitempty"`
+    CallbackQuery *CallbackQuery `json:callback_query,omitempty`
 }
 
 type InlineKeyboardButton struct {

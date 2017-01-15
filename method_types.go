@@ -20,7 +20,7 @@ type ForwardMessageObj struct {
 type SendPhotoObj struct {
     ChatId string `json:"chat_id"`
     Photo interface{} `json:"photo"`
-    Caption string `json:caption,omitempty"`
+    Caption string `json:"caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`

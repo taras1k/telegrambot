@@ -30,8 +30,8 @@ type SendAudioObj struct {
     ChatId string `json:"chat_id"`
     Audio interface{} `json:"audio"`
     Duration int64 `json:"duration,omitempty"`
-    Performer string `json:performer,omitempty"`
-    Title string `json:title,omitempty"`
+    Performer string `json:"performer,omitempty"`
+    Title string `json:"title,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
@@ -40,7 +40,7 @@ type SendAudioObj struct {
 type SendDocumentObj struct {
     ChatId string `json:"chat_id"`
     Document interface{} `json:"document"`
-    Caption string `json:caption,omitempty"`
+    Caption string `json:"caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
@@ -49,7 +49,7 @@ type SendDocumentObj struct {
 type SendStickerObj struct {
     ChatId string `json:"chat_id"`
     Sticker interface{} `json:"sticker"`
-    Caption string `json:caption,omitempty"`
+    Caption string `json:"caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
@@ -61,7 +61,7 @@ type SendVideoObj struct {
     Duration int64 `json:"duration,omitempty"`
     Width int64 `json:"width,omitempty"`
     Height int64 `json:"width,omitempty"`
-    Caption string `json:caption,omitempty"`
+    Caption string `json:"caption,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`
@@ -89,9 +89,9 @@ type SendVenueObj struct {
     ChatId string `json:"chat_id"`
     Latitude float64 `json:"latitude"`
     Longitude float64 `json:"longitude"`
-    Title string `json:title"`
-    Adress string `json:adress"`
-    FoursquareId string `json:foursquare_id,omitempty"`
+    Title string `json:"title"`
+    Adress string `json:"adress"`
+    FoursquareId string `json:"foursquare_id,omitempty"`
     DisableNotification bool `json:"disable_notification,omitempty"`
     ReplyToMessageId int64 `json:"reply_to_message_id,omitempty"`
     ReplyMarkup interface{} `json:"reply_markup,omitempty"`

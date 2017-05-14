@@ -157,7 +157,7 @@ type Update struct {
     EditedChannelPost *Message `json:"edited_channel_post,omitempty"`
     InlineQuery *InlineQuery `json:"inline_query,omitempty"`
     ChosenInlineResult *ChosenInlineResult `json:"chosen_inline_result,omitempty"`
-    CallbackQuery *CallbackQuery `json:callback_query,omitempty`
+    CallbackQuery *CallbackQuery `json:"callback_query,omitempty"`
 }
 
 type InlineKeyboardButton struct {
@@ -176,6 +176,7 @@ type CallbackQuery struct {
     From *User `json:"from"`
     Message *Message `json:"message,omitempty"`
     InlineMessageId string `json:"inline_message_id,omitempty"`
+    ChatInstance string `json:"chat_instance,omitempty"`
     Data string `json:"data"`
 }
 
